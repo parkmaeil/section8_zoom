@@ -11,4 +11,28 @@
         insert into book(title, price, author, page)
         values(#{title} , #{price}, #{author}, 500)
     </insert>
+
+    <select id="login" parameterType="com.example.entity.Customer"
+                                   resultType="com.example.entity.Customer">
+        select * from customer
+        where customer_id=#{customer_id} and password=#{password}
+    </select>
+
+    <insert id="bibleInsert" parameterType="com.example.entity.Bible">
+        insert into bible(customer_id, bible_word, bible_repent, bible_things,bible_implement)
+        values(#{customer_id} , #{bible_word}, #{bible_repent}, #{bible_things},#{bible_implement})
+    </insert>
+
+    <select id="getMonthlyData" parameterType="String" resultType="map">
+        SELECT DATE_FORMAT(bible_date, '%Y-%m') AS month, COUNT(*) AS count
+        FROM bible
+        WHERE customer_id = #{customerId}
+        GROUP BY month
+        ORDER BY month
+    </select>
+
+    <select id="customers" resultType="com.example.entity.Customer">
+        select * from customer
+    </select>
+
 </mapper>

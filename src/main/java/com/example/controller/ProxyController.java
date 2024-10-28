@@ -54,7 +54,7 @@ public class ProxyController {
         return new ResponseEntity<>(response, responseHeaders, HttpStatus.OK);
     }
 
-    /*@PostMapping("/proxy/insertBible")
+   @PostMapping("/proxy/insertBible")
     public ResponseEntity<?> insertBible(@RequestBody Bible bible) {
         try {
             //bibleReflectionService.saveReflection(bibleReflection);\
@@ -69,5 +69,5 @@ public class ProxyController {
     public ResponseEntity<?> getMonthlyData(@RequestParam("customerId") String customerId) {
         List<Map<String, Object>> data = mapper.getMonthlyData(customerId);
         return ResponseEntity.ok(data);
-    }*/
+    }
 }
